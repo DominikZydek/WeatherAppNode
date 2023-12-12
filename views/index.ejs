@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <%- include('links.ejs') %>
+</head>
+<body>
+    <% if (!locals.weatherID) { %>
+        <form class="weather-search" method="POST" action="/getweather">
+            <div class="city-label-input">
+                <label for="city-name">City Name:</label>
+                <input id="city-name" name="city-name" type="text" placeholder="e.g. Berlin" required autocomplete="off">
+            </div>
+            <div class="country-label-input">
+                <label for="country-code">Country Code:</label>
+                <input id="country-code" name="country-code" type="text" placeholder="e.g. DE" autocomplete="off">
+            </div>
+            <input type="submit" value="Get Weather">
+        </form>
+    <% } else { %>
+        <div class="weather-result">
+            <% if (locals.weatherID >= 200 && locals.weatherID < 300) { %> <img src="images/thunderstorm.svg"> <% } %>
+            <% if (locals.weatherID >= 300 && locals.weatherID < 400) { %> <img src="images/drizzle.svg"> <% } %>
+            <% if (locals.weatherID >= 500 && locals.weatherID < 600) { %> <img src="images/rain.svg"> <% } %>
+            <% if (locals.weatherID >= 600 && locals.weatherID < 700) { %> <img src="images/snow.svg"> <% } %>
+            <% if (locals.weatherID >= 700 && locals.weatherID < 800) { %> <img src="images/fog.svg"> <% } %>
+            <% if (locals.weatherID === 800) { %> <img src="images/clear.svg"> <% } %>
+            <% if (locals.weatherID > 800 && locals.weatherID < 810) { %> <img src="images/clouds.svg"> <% } %>
+            <h1 id="location-info"><%= cityName %>, <%= countryCode %></h1>
+            <h2 id="temperature-info"><%= temperature %> &deg;C</h2>
+            <div class="humidity-info-label-h3">
+                <label for="humidity-info">Humidity:</label>
+                <h3 id="humidity-info"><%= humidity %>%</h3>
+            </div>
+            <div class="windspeed-info-label-h3">
+                <label for="windspeed-info">Windspeed:</label>
+                <h3 id="windspeed-info"><%= windSpeed %> km/h</h3>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>
