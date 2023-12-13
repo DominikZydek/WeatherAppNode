@@ -1,10 +1,14 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+require('dotenv').config();
 
 const app = express();
-const port = 3000;
-const apiKey = "YOUR_API_KEY";
+const port = process.env.PORT || 3000;
+const apiKey = process.env.API_KEY;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +47,6 @@ app.post("/getweather", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
