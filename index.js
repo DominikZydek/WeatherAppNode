@@ -1,10 +1,18 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import * as fs from 'fs';
 
 const app = express();
 const port = 3000;
-const apiKey = "YOUR_API_KEY";
+var apiKey = "";
+fs.readFile("./private/key.json", "utf8", (error, data) => {
+    if (error) {
+        console.log(error);
+        return;
+    }
+    apiKey = JSON.parse(data).apiKey;
+});
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
