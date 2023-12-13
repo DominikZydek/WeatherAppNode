@@ -2,9 +2,7 @@
 ## Introduction
 Hello, this is my first project that interacts with public APIs! It is a simple weather app, written in HTML, CSS and JS. The libraries used are: Node, EJS, Express and Axios.
 ## Configuration
-The only thing you need to change beforehand is to enter your OpenWeather API Key inside index.js
-
-`const apiKey = "YOUR_API_KEY";`
+The only thing you need to change beforehand is to create a folder called `private` inside the project directory and enter your OpenWeather API Key inside `key.json`.
 
 Please don't forget to use `npm i` command in order to download necessary packages!
 Then, you enable the server via `node index.js` command and you can connect to it at `localhost:3000`
