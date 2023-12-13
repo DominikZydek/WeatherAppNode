@@ -3,8 +3,8 @@ import axios from "axios";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = process.env.PORT || 3001;
-const apiKey = process.env.API_KEY;
+const port = 3000;
+const apiKey = "YOUR_API_KEY";
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +43,6 @@ app.post("/getweather", async (req, res) => {
     }
 });
 
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log(`Server running on port ${port}`);
 });
